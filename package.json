@@ -1,0 +1,37 @@
+{
+  "name": "babel-plugin-rn-white-label",
+  "version": "1.0.0",
+  "description": "A babel plugin to filter file pickups",
+  "main": "plugin/index.js",
+  "scripts": {
+    "test": "mocha --require @babel/register",
+    "build": "babel test/src/code.js -d .bin --plugins ../../plugin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csath/babel-plugin-rn-white-label.git"
+  },
+  "keywords": [
+    "react-native",
+    "whitelabel",
+    "rn-whitelabel",
+    "babel",
+    "plugin"
+  ],
+  "author": "csath <chanakaathurugiriya@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csath/babel-plugin-rn-white-label/issues"
+  },
+  "homepage": "https://github.com/csath/babel-plugin-rn-white-label#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/register": "^7.7.4",
+    "babel-cli": "^6.26.0",
+    "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "@babel/types": "^7.7.4"
+  }
+}
