@@ -1,4 +1,4 @@
-# babel-plugin-rn-white-label
+# babel-plugin-rn-white-label   [![npm](https://img.shields.io/npm/v/babel-plugin-rn-white-label.svg)](https://npmjs.com/package/babel-plugin-rn-white-label)  [![npm](https://img.shields.io/npm/dm/babel-plugin-rn-white-label.svg)](https://npmjs.com/package/babel-plugin-rn-white-label)
 
 Transforms require statements for given custom extensions:
 
