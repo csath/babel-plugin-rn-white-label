@@ -10,7 +10,7 @@ Modify `require` statements according to specified options.
 
 If you have `img.png` asset as follows using custom extensions,
 
-![Image of Assets](https://github.com/csath/babel-plugin-rn-white-label/screenshots/assets.png)
+![Image of Assets](https://github.com/csath/babel-plugin-rn-white-label/blob/master/screenshots/assets.png)
 
 and if you want to bundle different files without modifiying the code,
 
