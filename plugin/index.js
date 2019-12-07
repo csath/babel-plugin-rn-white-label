@@ -1,6 +1,6 @@
 var existsSync = require('fs').existsSync;
 
-module.exports = function () {
+module.exports = function ({ types: t }) {
     return {
         name: 'babel-plugin-rn-white-label',
         visitor: {
@@ -30,7 +30,7 @@ module.exports = function () {
                 
                     // modify require statement if required assets found
                     if (existsSync(file_dir)) {
-                        path.node.arguments[0].value = path.node.arguments[0].value.replace(regx, `$1${options.mask}.$2`);
+                        path.replaceWith(t.callExpression(path.node.callee, [t.stringLiteral(path.node.arguments[0].value.replace(regx, `$1${options.mask}.$2`))]));
                     }
                 }
             }
