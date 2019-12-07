@@ -47,8 +47,8 @@ describe('skip require statements if not specified in exts list option', functio
   });
 
   it('should not handle require statements for empty exts', function () {
-    const code = transformCode(`require('../../abc.jpeg');`, { mask: 'ath', exts: [] });
-    assert.equal(code, `require('../../abc.jpeg');`);
+    const code = transformFile(__dirname + '/src/code.js', { mask: 'ath', exts: [] });
+    assert.equal(code, `require('./img.png');\n\nrequire('./img1.png');\n\nrequire('./img2.jpeg');`);
   });
 
 });
