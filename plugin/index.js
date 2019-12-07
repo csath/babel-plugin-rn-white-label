@@ -10,7 +10,7 @@ var default_paths_to_ignore = [
 
 module.exports = function ({ types: t }) {
     return {
-        name: 'babel-plugin-rn-white-label',
+        name: 'rn-white-label',
         visitor: {
             CallExpression (path, state) {
                 if (path.node.callee.type === 'Identifier'

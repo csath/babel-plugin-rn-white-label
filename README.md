@@ -52,7 +52,7 @@ yarn add -D babel-plugin-rn-white-label
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
-    ['babel-plugin-rn-white-label', { 
+    ['rn-white-label', { 
       mask: 'csa', 
       exts: ["png", "jpeg", "gif"]
     }
@@ -68,7 +68,7 @@ or
 ```json
 {
   "plugins": [
-    ["babel-plugin-rn-white-label", {
+    ["rn-white-label", {
       "mask": "csa",
       "exts": ["png", "jpeg", "gif"]
      }
