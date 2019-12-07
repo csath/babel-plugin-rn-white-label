@@ -14,24 +14,23 @@ module.exports = function () {
                         exts: state.opts.exts || [],
                     }
                     
-                    // do process only if options are specified
-                    if (options.mask && options.exts.length) {
+                    // skip if options are not specified
+                    if (!options.mask || !options.exts.length) return;
 
-                        const regx = new RegExp(`(\.)(${options.exts.join('|')})$`);
-                        const file_name = path.node.arguments[0].value.replace(/^(\.\/)/, '');
+                    const regx = new RegExp(`(\.)(${options.exts.join('|')})$`);
+                    const file_name = path.node.arguments[0].value.replace(/^(\.\/)/, '');
 
-                        // skip node_modules
-                        if (file_name.indexOf('node_modules') > -1) return;
+                    // skip node_modules
+                    if (file_name.indexOf('node_modules') > -1) return;
 
-                        // do only if given extension matches
-                        if (regx.exec(file_name)) {
+                    // skip if given extension doesn't matche
+                    if (!regx.exec(file_name)) return;
 
-                            const file_dir = state.file.opts.filename.replace(/\/([^\/\s]*)$/, '/') + file_name.replace(regx, `$1${options.mask}.$2`);
-                        
-                            if (existsSync(file_dir)) {
-                                path.node.arguments[0].value = path.node.arguments[0].value.replace(regx, `$1${options.mask}.$2`);
-                            }
-                        }
+                    const file_dir = state.file.opts.filename.replace(/\/([^\/\s]*)$/, '/') + file_name.replace(regx, `$1${options.mask}.$2`);
+                
+                    // modify require statement if required assets found
+                    if (existsSync(file_dir)) {
+                        path.node.arguments[0].value = path.node.arguments[0].value.replace(regx, `$1${options.mask}.$2`);
                     }
                 }
             }
