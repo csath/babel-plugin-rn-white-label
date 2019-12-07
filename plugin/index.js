@@ -1,5 +1,13 @@
 var existsSync = require('fs').existsSync;
 
+var project_root = (__dirname || '').replace('node_modules/babel-plugin-rn-white-label/plugin', '');
+
+var default_paths_to_ignore = [
+    project_root + 'node_modules',
+    project_root + 'ios/',
+    project_root + 'android/',
+];
+
 module.exports = function ({ types: t }) {
     return {
         name: 'babel-plugin-rn-white-label',
@@ -16,12 +24,12 @@ module.exports = function ({ types: t }) {
                     
                     // skip if options are not specified
                     if (!options.mask || !options.exts.length) return;
+                   
+                    // skip if in paths to ignore
+                    if (default_paths_to_ignore.find(_path => (state.file.opts.filename.indexOf(_path) > -1)))  return;
 
                     const regx = new RegExp(`(\.)(${options.exts.join('|')})$`);
                     const file_name = path.node.arguments[0].value.replace(/^(\.\/)/, '');
-
-                    // skip node_modules
-                    if (file_name.indexOf('node_modules') > -1) return;
 
                     // skip if given extension doesn't matche
                     if (!regx.exec(file_name)) return;
