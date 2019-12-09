@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-rn-white-label",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A babel plugin to filter file pickups",
   "main": "plugin/index.js",
   "scripts": {
